@@ -1,0 +1,26 @@
+[
+   {
+       "petName": "Lucy",
+       "ownerName": "Ghenet",
+       "aptNotes":"It's time for this rabbit's post spaying",
+       "aptDate": "2018-11-28 13:20"
+   },
+   {
+        "petName": "CC",
+        "ownerName": "Thomas",
+        "aptNotes":"CC is up for her vaccinations",
+        "aptDate": "2018-11-28 13:20"
+    },
+    {
+        "petName": "Cooper",
+        "ownerName": "Meron",
+        "aptNotes":"This dog is coming for his monthly check up",
+        "aptDate": "2018-11-28 13:20"
+    },
+    {
+        "petName": "Dudu",
+        "ownerName": "Biniam",
+        "aptNotes":"he has been pawing at his ear",
+        "aptDate": "2018-11-28 13:20"
+    }
+]
