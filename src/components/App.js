@@ -12,15 +12,27 @@ class App extends Component {
       formDisplay: true,
       lastIndex: 0
     };
+    this.addAppointment = this.addAppointment.bind(this);
     this.deleteAppointment = this.deleteAppointment.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
   }
-
+//toggle method for the add appointment form display
   toggleForm(){
     this.setState({
       formDisplay: !this.state.formDisplay
     });
   }
+//handles the add appontment /submit method
+ addAppointment(apt) {
+  let tempApts = this.state.myAppointments;
+  apt.aptId = this.state.lastIndex; //adds an id because we don't have an id field
+  tempApts.unshift(apt);
+  this.setState({
+    myAppointments: tempApts,
+    lastIndex: this.state.lastIndex + 1
+  });
+ } 
+
 //without is a lodash method w/c returns with out the specified element
   deleteAppointment(apt){
     let tempApts = this.state.myAppointments;
@@ -54,7 +66,7 @@ class App extends Component {
           <div className='row'>
             <div className='col-md-12 bg-white'>
               <div className='container'>
-                <AddAppointments formDisplay={this.state.formDisplay} toggleForm={this.toggleForm} />
+                <AddAppointments formDisplay={this.state.formDisplay} toggleForm={this.toggleForm}  addAppointment={this.addAppointment}/>
                 <SearchAppointments />
                 <ListAppointments appointments={this.state.myAppointments} deleteAppointment={this.deleteAppointment}/>
               </div>

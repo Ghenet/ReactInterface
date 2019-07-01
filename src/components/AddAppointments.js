@@ -12,8 +12,30 @@ export default class AddAppointments extends Component {
             aptNotes:''
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
     }
+//handle the form on submit
+    handleAdd(e){
+        e.preventDefault();
+        let tempApt ={
+            petName: this.state.petName,
+            ownerName: this.state.ownerName,
+            aptDate: this.state.aptDate + ' '+ this.state.aptTime,
+            aptNotes: this.state.aptNotes
+        };
 
+        this.props.addAppointment(tempApt);
+
+        this.setState({
+            petName:'',
+            ownerName: '',
+            aptDate:'',
+            aptTime:'',
+            aptNotes:''
+        });
+        this.props.toggleForm(); //this will hide the form after submission.
+    }
+//handles any change in the input field
     handleChange(e){
         const target = e.target;
         const value = target.value;
@@ -81,7 +103,7 @@ export default class AddAppointments extends Component {
 {/* Submit button */}
                         <div className='form-group form-row mb-0'>
                             <div className='offset-md-2 col-md-10'>
-                                <button type='submit' className='btn btn-primary d-block ml-auto'>Add Appointment</button>
+                                <button type='submit' className='btn btn-primary d-block ml-auto' onSubmit={this.handleAdd}>Add Appointment</button>
                             </div>
                         </div>
                     </form>
