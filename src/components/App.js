@@ -12,13 +12,14 @@ class App extends Component {
       formDisplay: true,
       orderBy: 'aptDate',
       orderDir: 'asc',
-      queryText: 'cooper',
+      queryText: '',
       lastIndex: 0
     };
     this.addAppointment = this.addAppointment.bind(this);
     this.deleteAppointment = this.deleteAppointment.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
     this.changeOrder = this.changeOrder.bind(this);
+    this.searchApts = this.searchApts.bind(this);
   }
 //toggle method for the add appointment form display
   toggleForm(){
@@ -26,6 +27,12 @@ class App extends Component {
       formDisplay: !this.state.formDisplay
     });
   }
+ //handles change in the search bar
+ searchApts(query) {
+   this.setState({
+    queryText: query
+   });
+ } 
 //handles the change order of display
 changeOrder(order,dir) {
   this.setState({
@@ -108,7 +115,11 @@ changeOrder(order,dir) {
             <div className='col-md-12 bg-white'>
               <div className='container'>
                 <AddAppointments formDisplay={this.state.formDisplay} toggleForm={this.toggleForm}  addAppointment={this.addAppointment}/>
-                <SearchAppointments  orderBy={this.state.orderBy} orderDir={this.state.orderDir}  changeOrder={this.changeOrder} />
+                <SearchAppointments 
+                 orderBy={this.state.orderBy} 
+                 orderDir={this.state.orderDir}  
+                 changeOrder={this.changeOrder} 
+                 searchApts={this.searchApts} />
                 <ListAppointments appointments={filterdApts} deleteAppointment={this.deleteAppointment}/>
               </div>
             </div>
